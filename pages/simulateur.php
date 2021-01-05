@@ -38,6 +38,22 @@ include '../include/menu.php';
             <span>objet 3</span>
             <img src="" alt="">
         </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="metrage" id="surface" value="">
+            <label class="form-check-label" for="surface">
+                m<sup>2</sup>
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="metrage" id="volume" value="">
+            <label class="form-check-label" for="volume">
+                m<sup>3</sup>
+            </label>
+        </div>
+        <div class="form-group">
+            <label for="resultat">Resultat :</label>
+            <input type="text" value="" id="resultat"><span id="metrage_resultat">m²</span>
+        </div>
     </div>
 
 
@@ -55,6 +71,7 @@ include '../include/bottom.php';
         input.val(nb);
         calcul();
     })
+
     let btn_moins = $('.moins');
     btn_moins.click(function (e){
         e.preventDefault();
@@ -64,14 +81,23 @@ include '../include/bottom.php';
             nb = parseInt(nb) - 1;
             input.val(nb);
         }
+        calcul();
     })
+    if ($('#surface').is(":checked")){
+        alert('ok surface');
+    }
+    if ($('#volume').is(":checked")){
+        alert('ok volume');
+    }
+
 
     function calcul(){
         let total_surface = 0;
         let total_volume = 0;
+
         $(".nb").each(function () {
-            let surface = parseInt($(this).parent().attr('data-volume'));
-            let volume = parseInt($(this).parent().attr('data-surface'));
+            let surface = parseFloat($(this).parent().attr('data-surface'));
+            let volume = parseFloat($(this).parent().attr('data-volume'));
             let nb = parseInt($(this).parent().find('.nb').val());
             console.log(surface, volume, nb);
             total_surface = total_surface + (nb*surface);
