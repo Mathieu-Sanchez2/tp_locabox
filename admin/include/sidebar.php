@@ -3,9 +3,6 @@
 
     <!-- Sidebar - Brand -->
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= URL_ADMIN; ?>">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
-        </div>
         <div class="sidebar-brand-text mx-3">Administration Locabox</sup></div>
     </a>
 
@@ -51,7 +48,7 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#box"
            aria-expanded="true" aria-controls="box">
-            <i class="fas fa-fw fa-wrench"></i>
+            <i class="fas fa-boxes"></i>
             <span>Box</span>
         </a>
         <div id="box" class="collapse" aria-labelledby="headingUtilities"
@@ -68,8 +65,8 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#client"
            aria-expanded="true" aria-controls="client">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span>Cient</span>
+            <i class="fas fa-users"></i>
+            <span>Client</span>
         </a>
         <div id="client" class="collapse" aria-labelledby="headingUtilities"
              data-parent="#accordionSidebar">
@@ -83,7 +80,7 @@
 
     <!-- Nav Item - Charts -->
     <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="<?= URL_ADMIN; ?>/statistique/">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>Statistiques</span></a>
     </li>
@@ -100,7 +97,7 @@
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
            aria-expanded="true" aria-controls="collapsePages">
-            <i class="fas fa-fw fa-folder"></i>
+            <i class="far fa-newspaper"></i>
             <span>Actualités</span>
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
@@ -115,12 +112,29 @@
 
     <!-- Nav Item - Tables -->
     <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-            <i class="fas fa-fw fa-table"></i>
+        <a class="nav-link" href="<?= URL_ADMIN; ?>/action/">
+            <i class="fas fa-info-circle"></i>
             <span>Actions</span></a>
     </li>
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
+    <!-- Nav Item - Pages Collapse Menu -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#utilisateur"
+           aria-expanded="true" aria-controls="utilisateur">
+            <i class="far fa-newspaper"></i>
+            <span>Utilisateur</span>
+        </a>
+        <div id="utilisateur" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Utilisateur :</h6>
+                <a class="collapse-item" href="<?= URL_ADMIN; ?>/utilisateur/add.php">Créer un utilisateur</a>
+                <a class="collapse-item" href="<?= URL_ADMIN; ?>/utilisateur/">Voir les utilisateurs</a>
+            </div>
+        </div>
+    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider my-0">
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>

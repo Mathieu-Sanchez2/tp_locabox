@@ -30,10 +30,13 @@
 
 <!-- Page level plugins -->
 <script src="<?= URL_ADMIN; ?>vendor/chart.js/Chart.min.js"></script>
+<script src="<?= URL_ADMIN; ?>vendor/select2/dist/js/select2.min.js"></script>
 
 <!-- Page level custom scripts -->
 <script src="<?= URL_ADMIN; ?>js/demo/chart-area-demo.js"></script>
 <script src="<?= URL_ADMIN; ?>js/demo/chart-pie-demo.js"></script>
+<script src="<?= URL_ADMIN; ?>vendor/ckeditor/ckeditor.js"></script>
+<script src="<?= URL_ADMIN; ?>js/myJs.js"></script>
 
 </body>
 
