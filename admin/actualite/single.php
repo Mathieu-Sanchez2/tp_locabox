@@ -36,10 +36,16 @@ include '../include/topbar.php';
                 </div>
             </div>
             <div class="row">
+<!--                <div class="col">-->
+<!--                    <div class="form-group">-->
+<!--                        <label for="illustration">Illustration :</label>-->
+<!--                        <img src="--><?//= URL_ADMIN .'img/illustration/'. $actualite['illustration'] ?><!--" alt="">-->
+<!--                    </div>-->
+                </div>
                 <div class="col">
                     <div class="form-group">
-                        <label for="illustration">Illustration :</label>
-                        <img src="<?= $actualite['illustration'] ?>" alt="">
+                        <label for="miniature">Miniature :</label>
+                        <img src="<?= URL_ADMIN .'img/illustration/'. $actualite['illustration_miniature'] ?>" alt="miniature">
                     </div>
                 </div>
             </div>
