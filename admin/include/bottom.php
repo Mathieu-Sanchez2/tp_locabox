@@ -36,7 +36,9 @@
 <script src="<?= URL_ADMIN; ?>js/demo/chart-area-demo.js"></script>
 <script src="<?= URL_ADMIN; ?>js/demo/chart-pie-demo.js"></script>
 <script src="<?= URL_ADMIN; ?>vendor/ckeditor/ckeditor.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <script src="<?= URL_ADMIN; ?>js/myJs.js"></script>
+
 
 </body>
 

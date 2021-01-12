@@ -26,7 +26,7 @@ include '../include/topbar.php';
         <?php foreach ($actualites as $actualite): ?>
             <tr>
                 <th scope="row"><?= $actualite['titre'] ?></th>
-                <td><?= substr($actualite['contenu'],0,100) ?></td>
+                <td><?= substr($actualite['contenu'],0,75) ?></td>
                 <td><?= $actualite['slug'] ?></td>
                 <td><div class="dropdown">
                         <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

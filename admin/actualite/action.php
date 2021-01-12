@@ -32,16 +32,16 @@ if (isset($_POST['add_actu'])){
     // renvoient la largeur et la hauteur d'une image
     $largeur_source = imagesx($source);
     $hauteur_source = imagesy($source);
-    // on ajoute l'image à source à l'image vierge
     $largeur_destination = imagesx($illustration_miniature);
     $hauteur_destination = imagesy($illustration_miniature);
-    // On crée la miniature
+
+    // On genere la miniature
     imagecopyresampled($illustration_miniature, $source, 0, 0, 0, 0, $largeur_destination, $hauteur_destination, $largeur_source, $hauteur_source);
     // On l'enregistre dans uploads/mini/
     imagejpeg($illustration_miniature, "../img/illustration/mini/mini-".$illustration);
     $miniIllustration ="mini/mini-".$illustration;
 
-    $sql = 'INSERT INTO actualite VALUES (NULL,"'.$_POST['titre'] .'","'.$_POST['contenu'] .'","'.$illustration .'","'. $miniIllustration.'","'.$_POST['slug'] .'", 0)';
+    $sql = 'INSERT INTO actualite VALUES (NULL,"'.$_POST['titre'] .'", NOW(),"'.$_POST['contenu'] .'","'.$illustration .'","'. $miniIllustration.'","'.$_POST['slug'] .'", 0)';
     $req = $bdd->prepare($sql);
     if (!$req->execute()){
         // error

@@ -24,6 +24,7 @@ if (isset($_GET['id'])){
             $rolesId[] = $role['id_role'];
         }
 //        var_dump($rolesId);
+//        die();
     }
 }
 include '../include/head.php';

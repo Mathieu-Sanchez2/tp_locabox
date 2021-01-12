@@ -35,7 +35,13 @@ $boxs = $req->fetchAll(PDO::FETCH_ASSOC);
                     <?php if ($box['disponibilite'] === '0'): ?>
                         <td class="bg-success text-center">disponible</td>
                     <?php else: ?>
-                        <td class="bg-danger text-center"><a href="<?= URL_ADMIN; ?>/location/single.php" class="text-body text-decoration-none">louer</a></td>
+                        <?php
+                            $sql = "SELECT * FROM location WHERE statut = 0 AND id_box = ".$box['id'];
+                            $req = $bdd->prepare($sql);
+                            $req->execute();
+                            $loc = $req->fetch(PDO::FETCH_ASSOC);
+                        ?>
+                        <td class="bg-danger text-center"><a href="<?= URL_ADMIN; ?>/location/single.php?id=<?= $loc['id'] ?>" class="text-body text-decoration-none">louer</a></td>
                     <?php endif; ?>
                     <td><div class="dropdown">
                             <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

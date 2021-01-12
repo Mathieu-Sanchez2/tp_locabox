@@ -40,8 +40,8 @@ include '../include/topbar.php';
 <!--                    <div class="form-group">-->
 <!--                        <label for="illustration">Illustration :</label>-->
 <!--                        <img src="--><?//= URL_ADMIN .'img/illustration/'. $actualite['illustration'] ?><!--" alt="">-->
-<!--                    </div>-->
-                </div>
+<!--                    </div>
+                    </div>-->
                 <div class="col">
                     <div class="form-group">
                         <label for="miniature">Miniature :</label>

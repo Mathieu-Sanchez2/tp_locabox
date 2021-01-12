@@ -23,7 +23,8 @@ if (isset($_GET['id'])){
         foreach ($rolesUser as $role) {
             $rolesId[] = $role['id_role'];
         }
-//        var_dump($rolesId);
+        var_dump($rolesId);
+        die();
     }
 }
 
