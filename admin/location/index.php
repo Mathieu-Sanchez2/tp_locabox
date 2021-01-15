@@ -28,13 +28,23 @@ include '../include/topbar.php';
                 <th scope="row"><a href="../client/single.php?id=<?= $location['id_client'] ?>"><?= $location['nom']. ' ' .$location['prenom'] ?></a></th>
                 <td><a href="../box/single.php?id=<?= $location['id_box'] ?>"><?= $location['numero'] ?></a></td>
                 <td>
-                    <?= $location['date_debut'] ?>
+                    <?php
+                        $date_debut = date_create($location['date_debut']);
+                        echo $date_debut->format('d/m/Y');
+                    ?>
                 </td>
                 <td>
-                    <?= $location['date_fin'] ?>
+                    <?php
+                        $date_fin = date_create($location['date_fin']);
+                        echo $date_fin->format('d/m/Y');
+                    ?>
                 </td>
                 <td>
-
+                    <?php
+                        $duree = $date_debut->diff($date_fin);
+//                        var_dump($duree);die;
+                        echo $duree->days . ' jour(s)';
+                    ?>
                 </td>
             </tr>
         <?php endforeach; ?>
