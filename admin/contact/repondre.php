@@ -21,10 +21,7 @@ include '../include/topbar.php';
     <div class="container">
         <h1 class="text-center mt-4">Reponse Contact</h1>
         <form action="action.php" method="post" class="text-center">
-            <div class="form-group">
-                <label for="statut">Statut :</label>
-                <input type="text" class="form-control" id="statut" name="statut" value="<?= $contact['statut'] ?>" readonly>
-            </div>
+            <input type="hidden" name="id" value="<?= $contact['id'] ?>">
             <div class="row">
                 <div class="col">
                     <div class="form-group">
@@ -57,12 +54,21 @@ include '../include/topbar.php';
                 <label for="objet">Objet</label>
                 <input class="form-control" id="objet" name="objet" value="<?= $contact['objet'] ?>" readonly>
             </div>
-            <div class="form-group">
-                <label for="message">Message :</label>
-                <textarea class="form-control" name="message" id="message" rows="6" readonly><?= $contact['message'] ?></textarea>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label for="message">Message :</label>
+                        <textarea class="form-control" name="message" id="message" rows="6" readonly><?= $contact['message'] ?></textarea>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label for="reponse">Réponse :</label>
+                        <textarea class="form-control" name="reponse" id="reponse" rows="6"></textarea>
+                    </div>
+                </div>
             </div>
-            <a href="repondre.php?id=<?= $contact['id']; ?>" class="btn btn-success">Répondre</a>
-            <a href="index.php" class="btn btn-primary">Retour</a>
+            <input type="submit" name="btn_reponse_contact" class="btn btn-primary" value="Envoyer">
         </form>
     </div>
 

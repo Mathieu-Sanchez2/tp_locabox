@@ -29,5 +29,14 @@ if (isset($_POST['add_location'])){
         header('location:add.php');
         die;
     }
+
+    $sqlAction = 'INSERT INTO action_utilisateur VALUES (NULL, '.$id.', NULL, '.$_SESSION['user']['id'].', 1, NOW()';
+    $reqAction = $bdd->prepare($sqlAction);
+    if (!$reqAction->execute()){
+        //error
+        header('location:add.php');
+        die;
+    }
+
     header('location:single.php?id='.$id);
 }

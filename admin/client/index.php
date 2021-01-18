@@ -5,11 +5,27 @@ include '../include/head.php';
 include '../include/sidebar.php';
 include '../include/topbar.php';
 
-$sql = 'SELECT * FROM client WHERE statut = 0';
+$limit = 10;
+if (isset($_GET['offset'])){
+    $offset = intval($_GET['offset']);
+}else{
+    $offset = 0;
+ }
+
+$sql = 'SELECT * FROM client WHERE statut = 0 ORDER BY id ASC LIMIT '. $limit .' OFFSET ' . $offset;
 $req = $bdd->prepare($sql);
 $req->execute();
 $clients = $req->fetchAll(PDO::FETCH_ASSOC);
 //var_dump($clients);
+
+$sqlCount = 'SELECT count(id) AS nb FROM client WHERE statut = 0';
+$req = $bdd->prepare($sqlCount);
+$req->execute();
+$count = $req->fetch(PDO::FETCH_ASSOC);
+$nbPages = $count['nb'] / $limit;
+$nbPages = ceil($nbPages);
+//var_dump($nbPages);
+
 ?>
 
 <div class="container-fluid">
@@ -51,6 +67,23 @@ $clients = $req->fetchAll(PDO::FETCH_ASSOC);
             <?php endforeach; ?>
             </tbody>
         </table>
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" href="index.php?offset=<?php echo $offset = $offset - $limit ?>" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <?php for($i = 1; $i<=$nbPages; $i++): ?>
+                    <li class="page-item"><a class="page-link" href="index.php?offset="><?= $i ?></a></li>
+                <?php endfor;  ?>
+                <li class="page-item">
+                    <a class="page-link" href="index.php?offset=<?php echo $offset = $offset + $limit + 10 ?>" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
     </div>
 </div>
 
