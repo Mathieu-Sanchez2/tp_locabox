@@ -1,19 +1,27 @@
 <?php
+include '../config/config.php';
 include '../config/bdd.php';
 
 if (isset($_POST['update_actu'])){
-    var_dump($_POST);
+//    var_dump($_POST);
     $sql = 'UPDATE actualite SET titre = "'. $_POST['titre'] .'", contenu = "'. $_POST['contenu'] .'", slug = "'. $_POST['slug'] .'"';
     $req = $bdd->prepare($sql);
     if ($req->execute()){
         header('location:index.php');
         die;
     }
+    // GESTION ACTION
+    $sql = 'INSERT INTO action_utilisateur VALUES (NULL, NULL, '.$id.', NULL, NULL, '.$_SESSION['utilisateur']['id'].', 2, NOW())';
+    $req = $bdd->prepare($sql);
+    if (!$req->execute()){
+        //error
+        die('probleme action');
+    }
 }
 
 if (isset($_POST['add_actu'])){
-    var_dump($_POST);
-    var_dump($_FILES);
+//    var_dump($_POST);
+//    var_dump($_FILES);
     $uploadfile = '../img/illustration/'.$_FILES["illustration"]["name"];
     if (!move_uploaded_file($_FILES['illustration']['tmp_name'], $uploadfile)){
         // 'ERROR !';
@@ -49,6 +57,13 @@ if (isset($_POST['add_actu'])){
         die;
     }
     $id = $bdd->lastInsertId();
+    // GESTION ACTION
+    $sql = 'INSERT INTO action_utilisateur VALUES (NULL, NULL, '.$id.', NULL, NULL, '.$_SESSION['utilisateur']['id'].', 1, NOW())';
+    $req = $bdd->prepare($sql);
+    if (!$req->execute()){
+        //error
+        die('probleme action');
+    }
     header('location:single.php?id='.$id);
     die;
 }

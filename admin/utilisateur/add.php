@@ -1,6 +1,13 @@
 <?php
 include '../config/config.php';
+
+if (!isLogged()){
+    header('location:'.URL_ADMIN.'login.php');
+    die;
+}
+
 include '../config/bdd.php';
+
 
 $sqlRoles = 'SELECT * FROM role';
 $reqRoles = $bdd->prepare($sqlRoles);

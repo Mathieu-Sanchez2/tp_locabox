@@ -1,5 +1,11 @@
 <?php
 include '../config/config.php';
+
+if (!isLogged()){
+    header('location:'.URL_ADMIN.'login.php');
+    die;
+}
+
 include '../config/bdd.php';
 
  if (isset($_GET['id'])){

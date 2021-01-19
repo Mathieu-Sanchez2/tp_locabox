@@ -11,10 +11,15 @@ if (isset($_POST['add_box'])){
     $req = $bdd->prepare($sql);
     if (!$req->execute()){
         // error
-        $_SESSION['add_box'] = false;
         header('location:add.php');
     }
-    $_SESSION['add_box'] = true;
+    // GESTION ACTION
+    $sql = 'INSERT INTO action_utilisateur VALUES (NULL, NULL, NULL, '.$_POST['id'].', NULL, '.$_SESSION['utilisateur']['id'].', 1, NOW())';
+    $req = $bdd->prepare($sql);
+    if (!$req->execute()){
+        //error
+        die('probleme action');
+    }
     header('location:index.php');
 }
 
@@ -23,11 +28,16 @@ if (isset($_GET['id'])){
     if ($id > 0){
         $sql = 'UPDATE box SET statut = 1 WHERE id='.$id;
         $req = $bdd->prepare($sql);
-        if ($req->execute()){
-            $_SESSION['delete_box'] = false;
+        if (!$req->execute()){
             header('location:index.php');
         }
-        $_SESSION['delete_box'] = true;
+        // GESTION ACTION
+        $sql = 'INSERT INTO action_utilisateur VALUES (NULL, NULL, NULL, '.$_POST['id'].', NULL, '.$_SESSION['utilisateur']['id'].', 3, NOW())';
+        $req = $bdd->prepare($sql);
+        if (!$req->execute()){
+            //error
+            die('probleme action');
+        }
         header('location:index.php');
     }
 
@@ -40,9 +50,14 @@ if (isset($_POST['update_box'])){
     $req = $bdd->prepare($sql);
     if (!$req->execute()){
         // error
-        $_SESSION['update_box'] = false;
         header('location:update.php?id='.$_POST['id']);
     }
-    $_SESSION['update_box'] = true;
+    // GESTION ACTION
+    $sql = 'INSERT INTO action_utilisateur VALUES (NULL, NULL, NULL, '.$_POST['id'].', NULL, '.$_SESSION['utilisateur']['id'].', 2, NOW())';
+    $req = $bdd->prepare($sql);
+    if (!$req->execute()){
+        //error
+        die('probleme action');
+    }
     header('location:single.php?id='.$_POST['id']);
 }
