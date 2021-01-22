@@ -29,7 +29,12 @@ if (isset($_POST['connect'])){
     }
     $_SESSION['connect'] = true;
     unset($user['mot_de_passe']);
+    $sqlRole = 'SELECT libelle FROM role_utilisateur INNER JOIN role ON role.id = role_utilisateur.id_role WHERE role_utilisateur.id_user =' . $user['id'];
+    $req = $bdd->prepare($sqlRole);
+    $req->execute();
+    $rolesUser = $req->fetch(PDO::FETCH_ASSOC);
     $_SESSION['utilisateur'] = $user;
+    $_SESSION['utilisateur']['roles'] = $rolesUser;
     header('location:index.php');
     die;
 }

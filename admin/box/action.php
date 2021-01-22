@@ -13,8 +13,9 @@ if (isset($_POST['add_box'])){
         // error
         header('location:add.php');
     }
+    $id = $bdd->lastInsertId();
     // GESTION ACTION
-    $sql = 'INSERT INTO action_utilisateur VALUES (NULL, NULL, NULL, '.$_POST['id'].', NULL, '.$_SESSION['utilisateur']['id'].', 1, NOW())';
+    $sql = 'INSERT INTO action_utilisateur VALUES (NULL, NULL, NULL, '.$id.', NULL, '.$_SESSION['utilisateur']['id'].', 1, NOW())';
     $req = $bdd->prepare($sql);
     if (!$req->execute()){
         //error
@@ -32,7 +33,7 @@ if (isset($_GET['id'])){
             header('location:index.php');
         }
         // GESTION ACTION
-        $sql = 'INSERT INTO action_utilisateur VALUES (NULL, NULL, NULL, '.$_POST['id'].', NULL, '.$_SESSION['utilisateur']['id'].', 3, NOW())';
+        $sql = 'INSERT INTO action_utilisateur VALUES (NULL, NULL, NULL, '.$id.', NULL, '.$_SESSION['utilisateur']['id'].', 3, NOW())';
         $req = $bdd->prepare($sql);
         if (!$req->execute()){
             //error

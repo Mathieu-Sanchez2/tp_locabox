@@ -119,20 +119,20 @@
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#utilisateur"
-           aria-expanded="true" aria-controls="utilisateur">
-            <i class="far fa-newspaper"></i>
-            <span>Utilisateur</span>
-        </a>
-        <div id="utilisateur" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Utilisateur :</h6>
-                <a class="collapse-item" href="<?= URL_ADMIN; ?>/utilisateur/add.php">Créer un utilisateur</a>
-                <a class="collapse-item" href="<?= URL_ADMIN; ?>/utilisateur/">Voir les utilisateurs</a>
-            </div>
-        </div>
-    </li>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#utilisateur"
+                   aria-expanded="true" aria-controls="utilisateur">
+                    <i class="far fa-newspaper"></i>
+                    <span>Utilisateur</span>
+                </a>
+                <div id="utilisateur" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Utilisateur :</h6>
+                        <a class="collapse-item" href="<?= URL_ADMIN; ?>/utilisateur/add.php">Créer un utilisateur</a>
+                        <a class="collapse-item" href="<?= URL_ADMIN; ?>/utilisateur/">Voir les utilisateurs</a>
+                    </div>
+                </div>
+            </li>
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
     <!-- Sidebar Toggler (Sidebar) -->

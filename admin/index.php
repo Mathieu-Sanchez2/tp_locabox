@@ -14,7 +14,13 @@
 ?>
 
     <h1 class="text-center mt-4">Index Back Office</h1>
-<?php var_dump($_SESSION); ?>
+<?php
+    var_dump($_SESSION);
+    var_dump('Super admin', isSuperAdmin());
+    var_dump('admin', isAdmin());
+    var_dump('Salarié', isSalarie());
+    var_dump('rédacteur', isRedacteur());
+?>
 
 <?php
     include 'include/footer.php';

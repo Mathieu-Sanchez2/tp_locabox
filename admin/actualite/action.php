@@ -3,19 +3,20 @@ include '../config/config.php';
 include '../config/bdd.php';
 
 if (isset($_POST['update_actu'])){
-//    var_dump($_POST);
-    $sql = 'UPDATE actualite SET titre = "'. $_POST['titre'] .'", contenu = "'. $_POST['contenu'] .'", slug = "'. $_POST['slug'] .'"';
+    var_dump($_POST);
+//    die;
+    $sql = 'UPDATE actualite SET titre = "'. $_POST['titre'] .'", contenu = "'. $_POST['contenu'] .'", slug = "'. $_POST['slug'] .'" WHERE id ='.$_POST['id'];
     $req = $bdd->prepare($sql);
     if ($req->execute()){
+        // GESTION ACTION
+        $sql = 'INSERT INTO action_utilisateur VALUES (NULL, NULL, '.$_POST['id'].', NULL, NULL, '.$_SESSION['utilisateur']['id'].', 2, NOW())';
+        $req = $bdd->prepare($sql);
+        if (!$req->execute()){
+            //error
+            die('probleme action');
+        }
         header('location:index.php');
         die;
-    }
-    // GESTION ACTION
-    $sql = 'INSERT INTO action_utilisateur VALUES (NULL, NULL, '.$id.', NULL, NULL, '.$_SESSION['utilisateur']['id'].', 2, NOW())';
-    $req = $bdd->prepare($sql);
-    if (!$req->execute()){
-        //error
-        die('probleme action');
     }
 }
 
@@ -66,4 +67,23 @@ if (isset($_POST['add_actu'])){
     }
     header('location:single.php?id='.$id);
     die;
+}
+
+if (isset($_GET['id'])){
+    $id = intval($_GET['id']);
+    if ($id >0){
+        $sql = 'UPDATE actualite SET statut = 1 WHERE id ='.$id;
+        $req = $bdd->prepare($sql);
+        if ($req->execute()){
+            // GESTION ACTION
+            $sql = 'INSERT INTO action_utilisateur VALUES (NULL, NULL, '.$id.', NULL, NULL, '.$_SESSION['utilisateur']['id'].', 3, NOW())';
+            $req = $bdd->prepare($sql);
+            if (!$req->execute()){
+                //error
+                die('probleme action');
+            }
+            header('location:index.php');
+            die;
+        }
+    }
 }

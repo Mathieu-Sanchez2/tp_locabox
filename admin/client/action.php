@@ -14,9 +14,17 @@ if (isset($_GET['id'])){
         $_SESSION['client_delete'] = false;
         header('location:index.php');
     }
+    // GESTION ACTION
+    $sql = 'INSERT INTO action_utilisateur VALUES (NULL, NULL, NULL, NULL, '.$id.', '.$_SESSION['utilisateur']['id'].', 3, NOW())';
+    $req = $bdd->prepare($sql);
+    if (!$req->execute()){
+        //error
+        die('probleme action');
+    }
     $_SESSION['client_delete'] = true;
     header('location:index.php');
 }
+
 if (isset($_GET['reset'])){
     $sql = 'UPDATE client SET statut = 0';
     $req = $bdd->prepare($sql);
@@ -33,6 +41,13 @@ if (isset($_POST['edit_client'])){
         $_SESSION['update_client'] = false;
         header('location:single.php?id='.$_POST['id']);
     }
+    // GESTION ACTION
+    $sql = 'INSERT INTO action_utilisateur VALUES (NULL, NULL, NULL, NULL, '.$_POST['id'].', '.$_SESSION['utilisateur']['id'].', 2, NOW())';
+    $req = $bdd->prepare($sql);
+    if (!$req->execute()){
+        //error
+        die('probleme action');
+    }
     $_SESSION['update_client'] = true;
     header('location:single.php?id='.$_POST['id']);
 }
@@ -47,6 +62,13 @@ if (isset($_POST['add_client'])){
         // error
         $_SESSION['add_client'] = false;
         header('location:add.php');
+    }
+    $id = $bdd->lastInsertId();
+    $sql = 'INSERT INTO action_utilisateur VALUES (NULL, NULL, NULL, NULL, '.$id.', '.$_SESSION['utilisateur']['id'].', 1, NOW())';
+    $req = $bdd->prepare($sql);
+    if (!$req->execute()){
+        //error
+        die('probleme action');
     }
     $_SESSION['add_client'] = true;
     header('location:index.php');

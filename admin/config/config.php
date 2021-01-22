@@ -10,3 +10,30 @@ function isLogged(){
     }
     return false;
 }
+
+function isSuperAdmin(){
+    if (isset($_SESSION['utilisateur']['roles']) && in_array('super admin', $_SESSION['utilisateur']['roles'])){
+        return true;
+    }
+    return false;
+}
+function isAdmin(){
+    if (isset($_SESSION['utilisateur']['roles']) && in_array('admin', $_SESSION['utilisateur']['roles'])){
+        return true;
+    }
+    return false;
+}
+function isSalarie(){
+    if (isset($_SESSION['utilisateur']['roles']) && in_array('salarié', $_SESSION['utilisateur']['roles'])){
+        return true;
+    }
+    return false;
+}
+function isRedacteur(){
+    if (isset($_SESSION['utilisateur']['roles']) && in_array('rédacteur', $_SESSION['utilisateur']['roles'])){
+        return true;
+    }
+    return false;
+}
+
+

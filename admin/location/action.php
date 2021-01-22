@@ -29,7 +29,12 @@ if (isset($_POST['add_location'])){
         header('location:add.php');
         die;
     }
-
+    $sql = 'INSERT INTO action_utilisateur VALUES (NULL, '.$id.', NULL, NULL, NULL, '.$_SESSION['utilisateur']['id'].', 1, NOW())';
+    $req = $bdd->prepare($sql);
+    if (!$req->execute()){
+        //error
+        die('probleme action');
+    }
     $sqlAction = 'INSERT INTO action_utilisateur VALUES (NULL, '.$id.', NULL, '.$_SESSION['user']['id'].', 1, NOW()';
     $reqAction = $bdd->prepare($sqlAction);
     if (!$reqAction->execute()){
