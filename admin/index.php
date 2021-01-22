@@ -18,8 +18,10 @@
 <?php
     $contrat = new PhpOffice\PhpWord\TemplateProcessor(URL_ADMIN . 'location/contrat/template/template_contrat.docx');
     // var_dump($contrat);
-    $contrat->setValue('prenom', 'Coucou1');
-    $contrat->setValue('nom', 'coucou2');
+    $prenom = 'mathieu';
+    $nom = 'sanchez';
+    $contrat->setValue('prenom', $prenom);
+    $contrat->setValue('nom', $nom);
     $contrat->saveAs('c:/wamp64/www/tp_locabox/admin/location/contrat/demo2.docx');
 ?>
 
