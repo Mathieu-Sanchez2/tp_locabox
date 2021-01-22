@@ -7,7 +7,8 @@
 }
 
     include 'config/bdd.php';
-    require_once 'vendor/Faker-master/src/autoload.php';
+    // require_once 'vendor/Faker-master/src/autoload.php';
+    include 'vendor/autoload.php';
     include 'include/head.php';
     include 'include/sidebar.php';
     include 'include/topbar.php';
@@ -15,11 +16,11 @@
 
     <h1 class="text-center mt-4">Index Back Office</h1>
 <?php
-    var_dump($_SESSION);
-    var_dump('Super admin', isSuperAdmin());
-    var_dump('admin', isAdmin());
-    var_dump('Salarié', isSalarie());
-    var_dump('rédacteur', isRedacteur());
+    $contrat = new PhpOffice\PhpWord\TemplateProcessor(URL_ADMIN . 'location/contrat/template/template_contrat.docx');
+    // var_dump($contrat);
+    $contrat->setValue('prenom', 'Coucou1');
+    $contrat->setValue('nom', 'coucou2');
+    $contrat->saveAs('c:/wamp64/www/tp_locabox/admin/location/contrat/demo2.docx');
 ?>
 
 <?php

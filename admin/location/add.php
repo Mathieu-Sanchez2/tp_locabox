@@ -5,7 +5,10 @@ if (!isLogged()){
     header('location:'.URL_ADMIN.'login.php');
     die;
 }
-
+if (!isSuperAdmin() || !isSalarie()){
+    header('location:'.URL_ADMIN.'index.php');
+    die;
+}
 include '../config/bdd.php';
 
 $sqlClients = 'SELECT * FROM client WHERE statut=0';

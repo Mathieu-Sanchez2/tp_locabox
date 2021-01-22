@@ -5,7 +5,10 @@ if (!isLogged()){
     header('location:'.URL_ADMIN.'login.php');
     die;
 }
-
+if (!isSuperAdmin() || !isSalarie()){
+    header('location:'.URL_ADMIN.'index.php');
+    die;
+}
 include '../config/bdd.php';
 $sql = 'SELECT location.id AS id_location, box.id AS id_box, client.id AS id_client, date_debut, date_fin, contrat, nom, prenom, adresse, code_postal, ville, numero, prix FROM location INNER JOIN client ON client.id = location.id_client INNER JOIN box ON box.id = location.id_box';
 $req = $bdd->prepare($sql);
